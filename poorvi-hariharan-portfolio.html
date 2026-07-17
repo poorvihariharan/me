@@ -1,0 +1,475 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Poorvi Hariharan</title>
+
+
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#fdf6ec;
+  --pink:#e8325a;
+  --orange:#f0782a;
+  --yellow:#f5c430;
+  --sage:#5a8c5a;
+  --sky:#4a9ab8;
+  --lav:#a06cbf;
+  --text:#1c1410;
+  --muted:#6b5a4e;
+  --sand:#f0e4d0;
+  --HF:'Arima Madurai',serif;
+  --BF:'Mulish',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--BF);background:var(--cream);color:var(--text);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.page{display:none}
+.page:target{display:block}
+#page-home{display:block}
+.page:target ~ #page-home{display:none}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:400;
+  height:56px;padding:0 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(253,246,236,0.93);
+  backdrop-filter:blur(14px);
+  border-bottom:2px solid rgba(232,50,90,0.12);
+}
+.nav-logo{font-family:var(--HF);font-weight:900;font-size:21px;color:var(--pink);letter-spacing:-.3px}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul a{
+  font-family:var(--BF);font-size:12.5px;font-weight:800;
+  color:var(--muted);letter-spacing:.07em;text-transform:uppercase;
+  padding-bottom:3px;border-bottom:2.5px solid transparent;
+  transition:color .15s,border-color .15s;
+}
+nav ul a:hover{color:var(--pink);border-color:var(--pink)}
+
+.btn{
+  font-family:var(--BF);font-size:13.5px;font-weight:800;
+  padding:12px 28px;border-radius:100px;cursor:pointer;
+  letter-spacing:.02em;display:inline-block;
+  transition:transform .12s,opacity .12s;border:none;
+}
+.btn:hover{transform:translateY(-2px);opacity:.88}
+.btn-pink{background:var(--pink);color:#fff}
+.btn-white{background:#fff;color:var(--text)}
+.btn-white:hover{color:var(--pink)}
+
+/* ── HERO ── */
+#page-home{background:var(--cream)}
+.hero{position:relative;width:100%;height:100vh;overflow:hidden}
+.hero-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 22%;
+  display:block;transform:scaleX(-1);
+}
+.hero-left-fade{
+  position:absolute;top:0;left:0;bottom:0;width:58%;
+  z-index:2;pointer-events:none;
+  background:linear-gradient(
+    to right,
+    rgba(10,6,4,.78)  0%,
+    rgba(10,6,4,.60) 35%,
+    rgba(10,6,4,.22) 65%,
+    transparent       100%
+  );
+}
+.hero-bottom{
+  position:absolute;bottom:0;left:0;right:0;height:18%;
+  z-index:2;pointer-events:none;
+  background:linear-gradient(to top,rgba(10,6,4,.55) 0%,transparent 100%);
+}
+.hero-txt{position:absolute;bottom:52px;left:52px;z-index:10;max-width:580px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.htag{
+  font-family:var(--BF);font-size:11.5px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 15px;border-radius:100px;
+}
+.htag-pk{background:var(--pink);color:#fff}
+.htag-ye{background:var(--yellow);color:var(--text)}
+.htag-or{background:var(--orange);color:#fff}
+.hero-h1{
+  font-family:var(--HF);font-weight:900;
+  font-size:clamp(64px,10vw,116px);
+  line-height:.87;letter-spacing:-3px;
+  color:#fff;margin-bottom:18px;
+}
+.hero-h1 em{color:var(--yellow);font-style:normal}
+.hero-sub{
+  font-family:var(--BF);font-size:17px;font-weight:500;
+  color:rgba(255,255,255,.9);
+  max-width:460px;line-height:1.7;margin-bottom:28px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ── MARQUEE ── */
+.mbar{background:var(--pink);overflow:hidden;white-space:nowrap;padding:15px 0}
+.min{
+  display:inline-block;
+  font-family:var(--HF);font-size:20px;font-weight:900;
+  color:#fff;letter-spacing:.03em;
+  animation:scroll 24s linear infinite;
+}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HOME INTRO ── */
+.h-intro{padding:84px 52px;background:var(--cream)}
+.h-intro-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.hi-l h2{font-family:var(--HF);font-weight:900;font-size:clamp(32px,4vw,50px);line-height:1.05;color:var(--text);margin-bottom:20px}
+.hi-l h2 .pk{color:var(--pink)} .hi-l h2 .or{color:var(--orange)}
+.hi-l p{font-size:15.5px;color:var(--muted);line-height:1.82;margin-bottom:14px}
+.hi-lnk{font-weight:800;color:var(--pink);font-size:14px;display:inline-flex;align-items:center;gap:6px;margin-top:8px}
+.hi-lnk:hover{text-decoration:underline}
+
+/* Values list — replaces stat cards */
+.values-list{display:flex;flex-direction:column;gap:18px;padding-top:8px}
+.val-item{
+  padding:22px 24px;border-radius:18px;
+  display:flex;align-items:flex-start;gap:16px;
+}
+.val-item:nth-child(1){background:var(--pink);color:#fff;transform:rotate(-.4deg)}
+.val-item:nth-child(2){background:var(--yellow);transform:rotate(.3deg)}
+.val-item:nth-child(3){background:var(--orange);color:#fff;transform:rotate(-.3deg)}
+.val-item:nth-child(4){background:var(--sage);color:#fff;transform:rotate(.4deg)}
+.val-num{
+  font-family:var(--HF);font-size:28px;font-weight:900;
+  line-height:1;opacity:.5;flex-shrink:0;margin-top:2px;
+}
+.val-item:nth-child(2) .val-num{color:var(--text)}
+.val-body{}
+.val-title{font-family:var(--HF);font-size:19px;font-weight:900;line-height:1.1;margin-bottom:4px}
+.val-item:nth-child(2) .val-title{color:var(--text)}
+.val-desc{font-family:var(--BF);font-size:13.5px;font-weight:500;opacity:.85;line-height:1.5}
+.val-item:nth-child(2) .val-desc{color:var(--muted)}
+
+/* ── ROLES ── */
+.h-roles{background:var(--text);padding:72px 52px}
+.h-roles-in{max-width:960px;margin:0 auto}
+.h-roles h2{font-family:var(--HF);font-weight:900;font-size:clamp(30px,4vw,50px);color:var(--cream);margin-bottom:48px}
+.rrow{display:flex;align-items:baseline;justify-content:space-between;padding:18px 0;border-bottom:1.5px solid rgba(253,246,236,.1);transition:padding-left .18s}
+.rrow:hover{padding-left:14px}
+.rrow:hover .rt{color:var(--yellow)}
+.rt{font-family:var(--HF);font-size:clamp(24px,3vw,40px);font-weight:900;color:var(--cream);transition:color .18s}
+.rc{font-family:var(--BF);font-size:12.5px;font-weight:800;color:rgba(253,246,236,.42);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;padding-left:16px}
+
+/* ── SHARED PAGE HEADER ── */
+.pg-banner{padding:130px 52px 68px;position:relative;overflow:hidden}
+.pg-banner h1{font-family:var(--HF);font-weight:900;font-size:clamp(46px,8vw,92px);line-height:.92;letter-spacing:-2.5px;color:#fff;margin-bottom:20px}
+.pg-banner p{font-size:18px;color:rgba(255,255,255,.8);max-width:480px;line-height:1.7}
+.about-banner{background:var(--yellow)}
+.about-banner h1{color:var(--text)}
+.about-banner p{color:rgba(28,20,16,.65)}
+.exp-banner{background:var(--orange)}
+.sk-banner{background:var(--lav)}
+.ct-banner{background:var(--sky)}
+
+/* ── ABOUT ── */
+.ab-body{padding:72px 52px 80px;background:var(--cream)}
+.ab-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:56px}
+.prose h2{font-family:var(--HF);font-size:28px;font-weight:900;color:var(--text);margin:42px 0 14px}
+.prose h2:first-child{margin-top:0}
+.prose h2.pk{color:var(--pink)} .prose h2.or{color:var(--orange)} .prose h2.ye{color:var(--yellow); -webkit-text-stroke:1px var(--orange)}
+.prose p{font-size:15.5px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.prose p strong{color:var(--text);font-weight:800}
+.aside{display:flex;flex-direction:column;gap:18px;position:sticky;top:76px}
+.acard{padding:22px 20px;border-radius:18px}
+.acard:nth-child(1){background:var(--pink);color:#fff}
+.acard:nth-child(2){background:var(--text);color:var(--cream)}
+.acard:nth-child(3){background:var(--orange);color:#fff}
+.acard:nth-child(4){background:var(--yellow)}
+.acard h3{font-family:var(--HF);font-size:19px;font-weight:900;margin-bottom:11px}
+.acard .school{font-weight:800;font-size:15px;margin-bottom:2px}
+.acard .deg{font-size:13.5px;opacity:.85;line-height:1.55}
+.acard p{font-size:14px;opacity:.85;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.chip{padding:4px 13px;border-radius:100px;font-family:var(--BF);font-size:12.5px;font-weight:700;background:rgba(255,255,255,.25)}
+.acard:nth-child(4) .chip{background:rgba(28,20,16,.12);color:var(--text)}
+
+/* ── EXPERIENCE ── */
+.ex-body{padding:72px 52px 80px;background:var(--cream)}
+.ex-in{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+.excard{border-radius:20px;padding:36px 40px;position:relative}
+.excard:nth-child(odd){transform:rotate(-.5deg);background:#fff;border:2.5px solid var(--sand)}
+.excard:nth-child(even){transform:rotate(.4deg);background:#fff;border:2.5px solid var(--sand)}
+.excard.curr{background:var(--pink);border:none;color:#fff;transform:rotate(-.3deg)}
+.ex-badge{display:inline-block;font-family:var(--BF);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 13px;border-radius:100px;margin-bottom:12px}
+.excard.curr .ex-badge{background:rgba(255,255,255,.25);color:#fff}
+.excard:not(.curr) .ex-badge{background:var(--yellow);color:var(--text)}
+.ex-date{font-family:var(--BF);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.excard.curr .ex-date{color:rgba(255,255,255,.75)} .excard:not(.curr) .ex-date{color:var(--muted)}
+.ex-co{font-family:var(--BF);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.excard.curr .ex-co{color:rgba(255,255,255,.7)} .excard:not(.curr) .ex-co{color:var(--orange)}
+.ex-role{font-family:var(--HF);font-size:clamp(22px,2.8vw,30px);font-weight:900;line-height:1.12;margin-bottom:16px}
+.excard.curr .ex-role{color:#fff} .excard:not(.curr) .ex-role{color:var(--text)}
+.ex-buls{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ex-buls li{font-size:14.5px;padding-left:20px;position:relative;line-height:1.65}
+.excard.curr .ex-buls li{color:rgba(255,255,255,.88)} .excard:not(.curr) .ex-buls li{color:var(--muted)}
+.ex-buls li::before{content:"✦";position:absolute;left:0;font-size:8px;top:5px}
+.excard.curr .ex-buls li::before{color:rgba(255,255,255,.55)} .excard:not(.curr) .ex-buls li::before{color:var(--pink)}
+
+/* ── SKILLS ── */
+.sk-body{padding:72px 52px 80px;background:var(--cream)}
+.sk-in{max-width:960px;margin:0 auto}
+.skc{margin-bottom:52px}
+.skh{font-family:var(--HF);font-size:clamp(28px,3.2vw,44px);font-weight:900;color:var(--text);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.skd{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.skcloud{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-block;font-family:var(--BF);font-size:14px;font-weight:800;padding:11px 22px;border-radius:100px;cursor:default;transition:transform .15s}
+.pill:hover{transform:scale(1.06) rotate(-1.5deg)}
+.ppk{background:var(--pink);color:#fff} .por{background:var(--orange);color:#fff}
+.pye{background:var(--yellow);color:var(--text)} .psg{background:var(--sage);color:#fff}
+.psk{background:var(--sky);color:#fff} .plv{background:var(--lav);color:#fff}
+.pdk{background:var(--text);color:var(--cream)} .psa{background:var(--sand);color:var(--text);border:2px solid rgba(0,0,0,.08)}
+
+/* ── CONTACT ── */
+.ct-body{padding:72px 52px 80px;background:var(--cream)}
+.ct-in{max-width:800px;margin:0 auto}
+.ct-note{font-family:var(--HF);font-size:clamp(24px,3.2vw,38px);font-weight:900;line-height:1.15;color:var(--text);margin-bottom:52px;max-width:640px}
+.ct-note .pk{color:var(--pink)} .ct-note .or{color:var(--orange)}
+.ct-rows{display:flex;flex-direction:column}
+.ctr{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:2px solid rgba(232,50,90,.12);transition:padding-left .18s}
+.ctr:hover{padding-left:10px}
+.ctr:last-child{border-bottom:none}
+.ctl{font-family:var(--BF);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);width:110px;flex-shrink:0}
+.ctv{font-family:var(--HF);font-size:clamp(20px,2.5vw,30px);font-weight:900;color:var(--text);flex:1}
+.ctv a{color:var(--pink)} .ctv a:hover{text-decoration:underline}
+.cta{font-size:24px;color:var(--pink);font-weight:900}
+
+footer{background:var(--text);text-align:center;padding:26px;font-family:var(--BF);font-size:12.5px;color:rgba(253,246,236,.42)}
+
+@media(max-width:720px){
+  .h-intro-in,.ab-in{grid-template-columns:1fr}
+  .aside{position:static}
+  nav ul{gap:10px} nav ul a{font-size:10.5px}
+  .hero-txt{left:24px;right:24px;bottom:36px}
+  .h-intro,.h-roles,.pg-banner,.ab-body,.ex-body,.sk-body,.ct-body{padding-left:24px;padding-right:24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#page-home">Poorvi ✦</a>
+  <ul>
+    <li><a href="#page-home">Home</a></li>
+    <li><a href="#page-about">About</a></li>
+    <li><a href="#page-experience">Experience</a></li>
+    <li><a href="#page-skills">Skills</a></li>
+    <li><a href="#page-contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<div class="page" id="page-about">
+  <div class="pg-banner about-banner">
+    <div style="position:absolute;right:-60px;top:-40px;width:360px;height:360px;border-radius:50%;background:var(--pink);opacity:.18;pointer-events:none"></div>
+    <h1>Full of life,<br />always learning,<br />&amp; <em style="color:var(--pink)">passionate.</em></h1>
+    <p>Here's a little more about who I am beyond the resume.</p>
+  </div>
+  <div class="ab-body">
+    <div class="ab-in">
+      <div class="prose">
+
+        <h2>My story</h2>
+        <p>I graduated from <strong>UNC Chapel Hill</strong> in December 2024 with a degree in Communications (New Media) and a Minor in Entrepreneurship. My whole academic path was driven by my desire to connect with people, build experiences, and broaden my perspectives.</p>
+        <p>That drive has followed me through every role I've held, from designing engagement programs at IBM Research as an intern, to working in UX at Sapta Inc, to now building out North America's entry level hiring experience at IBM as Digital Engagement Lead.</p>
+
+        <h2 class="or">How I work</h2>
+        <p>I love fun, and I love connecting with people. Before I design anything, I want to talk to people, I want to understand the people I am designing for. What their perspectives are, their friction points, their unspoken needs.</p>
+        <p>I then use that as the framework for everything I go on to do: content strategy, prototype development, engagement frameworks, and more. I also focus on building things that can work on their own, making my projects scalable, clear, and repeatable.</p>
+
+        <h2 class="pk">Beyond the work</h2>
+        <p>Since I was a baby, or, as I like to say, since before I was born, I have been in the world of meditation, breathwork, and mindfulness. This has been a large part of my life... to the point that almost everyone I know, I know through the<strong>Art of Living Foundation</strong>.</p>
+        <p>My life has been dedicated to moving the vision of <strong>Gurudev Sri Sri Ravi Shankar</strong> forward, which is to see a smile on every individual's face. Since 2016, I've been a certified breathwork and meditation instructor with the Art of Living Foundation. Teaching has shaped how I think about communication, presence, and meeting people where they are. It's one of the most meaningful things I do.</p>
+        <p>I speak three languages, <strong>Tamil, Hindi, and English.</strong> Which has greatly influenced how I think about inclusive, cross cultural experience design.</p>
+        <p>When I'm not working, I am most of the time with my family and on some new adventure, or I am meditating!</p>
+
+      </div>
+      <div class="aside">
+        <div class="acard">
+          <h3>Education</h3>
+          <div class="school">UNC Chapel Hill</div>
+          <div class="deg">BA Communications, New Media<br />Minor in Entrepreneurship</div>
+          <div class="deg" style="margin-top:8px;font-weight:900;font-size:15px">Dec 2024</div>
+        </div>
+        <div class="acard">
+          <h3>Languages</h3>
+          <div class="chips">
+            <span class="chip">English</span>
+            <span class="chip">Tamil</span>
+            <span class="chip">Hindi</span>
+          </div>
+        </div>
+        <div class="acard">
+          <h3>Currently</h3>
+          <p>North America Entry Level Hiring Digital Engagement Lead at <strong>IBM</strong>
+        </div>
+        <div class="acard">
+          <h3 style="color:var(--text)">What lights me up</h3>
+          <div class="chips">
+            <span class="chip" style="background:var(--pink);color:#fff">Meditation</span>
+            <span class="chip" style="background:var(--orange);color:#fff">Breathwork</span>
+            <span class="chip" style="background:var(--lav);color:#fff">AI &amp; Design</span>
+            <span class="chip" style="background:var(--sage);color:#fff">Community</span>
+            <span class="chip" style="background:var(--sky);color:#fff">Family</span>
+            <span class="chip" style="background:var(--yellow);color:var(--text)">Adventure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><p>© 2025 Poorvi Hariharan  ✦  Made with IBM Bob</p></footer>
+</div>
+
+
+<div class="page" id="page-experience">
+  <div class="pg-banner exp-banner">
+    <h1>Where I've<br />been &amp;<br />what I've<br />built.</h1>
+    <p>The work that has shaped how I think, design, and lead.</p>
+  </div>
+  <div class="ex-body">
+    <div class="ex-in">
+      <div class="excard curr"><div class="ex-badge">✦ Current Role</div><div class="ex-date">April 2026 – Present</div><div class="ex-co">IBM · RTP, NC</div><div class="ex-role">Digital Engagement Lead,<br />North America Entry Level Hiring</div><ul class="ex-buls"><li>Design digital engagement strategies improving the hiring experience for candidates and university partners</li><li>Facilitate cross functional planning across university relations, marketing, and operations</li><li>Analyze engagement metrics and candidate behavior to recommend strategy improvements</li><li>Prototype AI enabled workflows and internal tools using IBM BOB and generative AI</li><li>Develop scalable frameworks and repeatable processes that improve execution across hiring initiatives</li><li>Translate stakeholder needs into actionable digital experiences through research and iteration</li></ul></div>
+      <div class="excard"><div class="ex-badge">Volunteer · Ongoing</div><div class="ex-date">January 2022 – Present</div><div class="ex-co">Sri Sri Ravi Shankar</div><div class="ex-role">TikTok Lead &amp; Content Strategist</div><ul class="ex-buls"><li>Conducted audience behavior research and content usability analysis, driving growth to 500K+ followers and 2M+ likes</li><li>Developed content strategies that improve engagement at scale across global audiences</li><li>Used GPT-4, DALL·E, and NotebookLM to prototype and test creative concepts</li><li>Led a team using audience insights to shape strategy and creative direction</li></ul></div>
+      <div class="excard"><div class="ex-badge">Full-Time</div><div class="ex-date">December 2024 – March 2026</div><div class="ex-co">Sapta Inc · RTP, NC</div><div class="ex-role">User Experience Designer</div><ul class="ex-buls"><li>Led user research to understand customer needs and shape product and service direction</li><li>Turned research into design recommendations that improved retention 15% and conversions 10%</li><li>Mapped user journeys and built prototypes to test and refine solutions</li><li>Used AI tools to streamline research, ideation, and early concept development</li></ul></div>
+      <div class="excard"><div class="ex-badge">Internship</div><div class="ex-date">June 2024 – September 2024</div><div class="ex-co">Teradata · Remote</div><div class="ex-role">Academic Marketing Intern</div><ul class="ex-buls"><li>Produced digital assets and communication templates for academic outreach</li><li>Optimized UX in email campaigns and portal touchpoints, enhancing engagement and CTRs</li><li>Led content audits informing visual design decisions for internal tools</li><li>Translated complex technical solutions into user-friendly content</li></ul></div>
+      <div class="excard"><div class="ex-badge">Internship</div><div class="ex-date">May 2022 – August 2022</div><div class="ex-co">IBM Research · Yorktown Heights, NY</div><div class="ex-role">Research Intern — Research Talent Program</div><ul class="ex-buls"><li>Designed engagement materials for IBM Research's global internship program supporting 450+ interns</li><li>Facilitated workshops using Enterprise Design Thinking principles</li><li>Created post-program reports synthesizing participant feedback into recommendations</li></ul></div>
+      <div class="excard"><div class="ex-badge">Part-Time</div><div class="ex-date">August 2021 – May 2022</div><div class="ex-co">UNC Charlotte, Popp Martin Student Union</div><div class="ex-role">Operations Assistant</div><ul class="ex-buls"><li>Coordinated conferences with up to 500 attendees, managing full logistics and A/V</li><li>Trained and onboarded new hires, improving team response time</li><li>Provided real-time support for VIP speakers and university leadership</li></ul></div>
+      <div class="excard"><div class="ex-badge">Community · Ongoing</div><div class="ex-date">October 2016 – Present</div><div class="ex-co">Art of Living Foundation</div><div class="ex-role">Breathwork &amp; Meditation Instructor · Marketing Coordinator</div><ul class="ex-buls"><li>Lead planning and execution for community events serving 1,000+ attendees</li><li>Developed social media and email strategies that increased engagement 25% in three months</li><li>Utilized Salesforce and CRM tools to track registrations and streamline communication</li><li>Organize and teach large-scale wellness programs for 1K+ members</li></ul></div>
+    </div>
+  </div>
+  <footer><p>© 2025 Poorvi Hariharan  ✦  Made with IBM Bob</p></footer>
+</div>
+
+
+<div class="page" id="page-skills">
+  <div class="pg-banner sk-banner">
+    <h1>What I<br />bring to<br />the table.</h1>
+    <p>Design, strategy, technology, and the soft skills that tie it all together.</p>
+  </div>
+  <div class="sk-body">
+    <div class="sk-in">
+      <div class="skc"><div class="skh"><span class="skd" style="background:var(--pink)"></span>Design &amp; Prototyping</div><div class="skcloud"><span class="pill ppk">Figma</span><span class="pill psa">Adobe XD</span><span class="pill por">Illustrator</span><span class="pill psk">Photoshop</span><span class="pill pye">Canva</span><span class="pill ppk">Webflow</span><span class="pill plv">Framer</span><span class="pill pdk">Journey Mapping</span><span class="pill psg">Wireframing</span><span class="pill por">Prototyping</span></div></div>
+      <div class="skc"><div class="skh"><span class="skd" style="background:var(--sage)"></span>Web &amp; Development</div><div class="skcloud"><span class="pill psg">HTML</span><span class="pill psk">CSS</span><span class="pill pye">JavaScript</span><span class="pill pdk">Python</span><span class="pill por">Git</span></div></div>
+      <div class="skc"><div class="skh"><span class="skd" style="background:var(--yellow)"></span>AI &amp; Emerging Tools</div><div class="skcloud"><span class="pill ppk">IBM BOB</span><span class="pill pye">GPT-4</span><span class="pill por">DALL·E</span><span class="pill plv">NotebookLM</span><span class="pill pdk">Generative AI Workflows</span></div></div>
+      <div class="skc"><div class="skh"><span class="skd" style="background:var(--sky)"></span>Marketing &amp; Ops</div><div class="skcloud"><span class="pill psk">Salesforce</span><span class="pill ppk">Mailchimp</span><span class="pill por">HubSpot</span><span class="pill pye">Seismic</span><span class="pill psg">Eventbrite</span><span class="pill plv">Notion</span><span class="pill pdk">Microsoft Office</span></div></div>
+      <div class="skc"><div class="skh"><span class="skd" style="background:var(--orange)"></span>Strategy &amp; Research</div><div class="skcloud"><span class="pill por">UX Research</span><span class="pill ppk">Content Strategy</span><span class="pill plv">Enterprise Design Thinking</span><span class="pill pye">Engagement Analytics</span><span class="pill psg">Audience Research</span><span class="pill pdk">Cross functional Facilitation</span></div></div>
+    </div>
+  </div>
+  <footer><p>© 2025 Poorvi Hariharan  ✦  Made with IBM Bob</p></footer>
+</div>
+
+
+<div class="page" id="page-contact">
+  <div class="pg-banner ct-banner">
+    <div style="position:absolute;bottom:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:var(--yellow);opacity:.28;pointer-events:none"></div>
+    <h1>Let's<br />talk.</h1>
+    <p>I'd love to hear from you.</p>
+  </div>
+  <div class="ct-body">
+    <div class="ct-in">
+      <div class="ct-note">I'm especially drawn to work at the intersection of <span class="pk">digital strategy,</span> <span class="or">UX,</span> and AI. If something you're building resonates please reach out.</div>
+      <div class="ct-rows">
+        <div class="ctr"><div class="ctl">Email</div><div class="ctv"><a href="mailto:poorvihariharan@gmail.com">poorvihariharan@gmail.com</a></div><div class="cta">→</div></div>
+        <div class="ctr"><div class="ctl">LinkedIn</div><div class="ctv"><a href="https://www.linkedin.com/in/poorvihariharan/" target="_blank">https://www.linkedin.com/in/poorvihariharan/</a></div><div class="cta">→</div></div>
+        <div class="ctr"><div class="ctl">Portfolio</div><div class="ctv"><a href="" target="_blank"></a></div><div class="cta">→</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><p>© 2025 Poorvi Hariharan  ✦  Made with IBM Bob</p></footer>
+</div>
+
+
+<div class="page" id="page-home">
+  <div class="hero">
+    <img class="hero-img" src="https://raw.githubusercontent.com/poorvihariharan/me/main/LandingPageillustration(AIGenerated).png" alt="Illustrated aerial park scene with people meditating, doing yoga, and picnicking" />
+    <div class="hero-left-fade"></div>
+    <div class="hero-bottom"></div>
+    <div class="hero-txt">
+      <div class="hero-tags">
+        <span class="htag htag-pk">Led by Empathy</span>
+        <span class="htag htag-ye">Human Centred</span>
+        <span class="htag htag-or">Impact Focused</span>
+      </div>
+      <h1 class="hero-h1">Hi, I am<br /><em>Poorvi!</em></h1>
+      <p class="hero-sub">I am focused on creating and designing experiences that connect people, feel real and intentional, and move with the ever changing technology of today.</p>
+      <div class="hero-btns">
+        <a href="#page-about" class="btn btn-pink">Get to know me</a>
+        <a href="#page-contact" class="btn btn-white">Let's connect</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mbar">
+    <div class="min">Digital Strategy  ✦  UX Design  ✦  Content Strategy  ✦  AI Workflows  ✦  Breathwork &amp; Meditation  ✦  Community  ✦  Digital Strategy  ✦  UX Design  ✦  Content Strategy  ✦  AI Workflows  ✦  Breathwork &amp; Meditation  ✦  Community  ✦ </div>
+  </div>
+
+  <div class="h-intro">
+    <div class="h-intro-in">
+      <div class="hi-l">
+        <h2>At the intersection of people, <span class="pk">technology,</span> and <span class="or">experience design.</span></h2>
+        <p>I've always been a creator at heart, drawing and crafting new inventions since I was a child. I enjoy bringing structure to ideas while still making them feel full of life.</p>
+        <p>I'm inspired by my roots, and that shows up in how I design: warm, intentional, bold, and always thoughtful. I care deeply about how people feel when they interact with something.</p>
+        <p>To me, good design isn't just about how it looks or functions. It is about whether it <em>connects</em>. Whether it makes sense, makes someone feel seen, or simply makes their day a little easier.</p>
+        <a href="#page-about" class="hi-lnk">Read my full story →</a>
+      </div>
+
+      
+      <div class="values-list">
+        <div class="val-item">
+          <div class="val-num"></div>
+          <div class="val-body">
+            <div class="val-title">Empathy first</div>
+            <div class="val-desc">Every decision starts with understanding the person on the other side.</div>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-num"></div>
+          <div class="val-body">
+            <div class="val-title">Rooted in curiosity</div>
+            <div class="val-desc">I ask questions before I reach for answers. Always learning, always exploring.</div>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-num"></div>
+          <div class="val-body">
+            <div class="val-title">Built to connect</div>
+            <div class="val-desc">Great design bridges people. I build experiences that make someone feel seen.</div>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-num"></div>
+          <div class="val-body">
+            <div class="val-title">Grounded in joy</div>
+            <div class="val-desc">Mindfulness, community, and a deep love for people shape everything I create.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-roles">
+    <div class="h-roles-in">
+      <h2>Where I've done<br />my best work</h2>
+      <div>
+        <a href="#page-experience" class="rrow"><div class="rt">Digital Engagement Lead</div><div class="rc">IBM · 2026–Present</div></a>
+        <a href="#page-experience" class="rrow"><div class="rt">UX Designer</div><div class="rc">Sapta Inc · 2024–2026</div></a>
+        <a href="#page-experience" class="rrow"><div class="rt">TikTok Lead &amp; Content Strategist</div><div class="rc">Sri Sri Ravi Shankar · 2022–Present</div></a>
+        <a href="#page-experience" class="rrow"><div class="rt">Academic Marketing Intern</div><div class="rc">Teradata · 2024</div></a>
+        <a href="#page-experience" class="rrow"><div class="rt">Research Intern</div><div class="rc">IBM Research · 2022</div></a>
+      </div>
+    </div>
+  </div>
+
+  <footer><p>© 2025 Poorvi Hariharan  ✦  Made with IBM Bob</p></footer>
+</div>
+
+</body>
+</html>
