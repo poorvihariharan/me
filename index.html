@@ -51,6 +51,7 @@ nav ul a{
 }
 nav ul a:hover{color:var(--pink);border-color:var(--pink)}
 
+
 .btn{
   font-family:var(--BF);font-size:13.5px;font-weight:800;
   padding:12px 28px;border-radius:100px;cursor:pointer;
@@ -139,14 +140,9 @@ nav ul a:hover{color:var(--pink);border-color:var(--pink)}
 .val-item:nth-child(2){background:var(--yellow);transform:rotate(.3deg)}
 .val-item:nth-child(3){background:var(--orange);color:#fff;transform:rotate(-.3deg)}
 .val-item:nth-child(4){background:var(--sage);color:#fff;transform:rotate(.4deg)}
-.val-num{
-  font-family:var(--HF);font-size:28px;font-weight:900;
-  line-height:1;opacity:.5;flex-shrink:0;margin-top:2px;
-}
-.val-item:nth-child(2) .val-num{color:var(--text)}
 .val-body{}
 .val-title{font-family:var(--HF);font-size:19px;font-weight:900;line-height:1.1;margin-bottom:4px}
-.val-item:nth-child(2) .val-title{color:var(--text)}
+.val-item:nth-child(2) .val-title{color:var(--text);margin-bottom:4px}
 .val-desc{font-family:var(--BF);font-size:13.5px;font-weight:500;opacity:.85;line-height:1.5}
 .val-item:nth-child(2) .val-desc{color:var(--muted)}
 
@@ -174,6 +170,22 @@ nav ul a:hover{color:var(--pink);border-color:var(--pink)}
 /* ── ABOUT ── */
 .ab-body{padding:72px 52px 80px;background:var(--cream)}
 .ab-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:56px}
+.photo-card{
+  width:100%;max-width:280px;margin:0 auto 28px;
+  background:#fff;
+  border:4px solid var(--text);
+  border-radius:18px;
+  padding:10px 10px 28px;
+  transform:none;
+  box-shadow:6px 6px 0 var(--pink);
+  display:block;
+}
+.photo-card img{
+  width:100%;aspect-ratio:4/5;
+  object-fit:cover;object-position:center top;
+  border-radius:10px;
+  display:block;
+}
 .prose h2{font-family:var(--HF);font-size:28px;font-weight:900;color:var(--text);margin:42px 0 14px}
 .prose h2:first-child{margin-top:0}
 .prose h2.pk{color:var(--pink)} .prose h2.or{color:var(--orange)} .prose h2.ye{color:var(--yellow); -webkit-text-stroke:1px var(--orange)}
@@ -216,6 +228,13 @@ nav ul a:hover{color:var(--pink);border-color:var(--pink)}
 .excard.curr .ex-buls li::before{color:rgba(255,255,255,.55)} .excard:not(.curr) .ex-buls li::before{color:var(--pink)}
 
 /* ── SKILLS ── */
+.sk-callout{background:var(--text);padding:56px 52px}
+.sk-callout-in{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.sk-callout p{font-family:var(--HF);font-size:clamp(22px,3vw,34px);font-weight:900;color:var(--cream);line-height:1.2;max-width:600px}
+.sk-callout p em{color:var(--yellow);font-style:normal}
+.sk-callout-stat{text-align:right;flex-shrink:0}
+.sk-callout-stat strong{font-family:var(--HF);font-size:clamp(40px,6vw,72px);font-weight:900;color:var(--pink);display:block;line-height:1}
+.sk-callout-stat span{font-family:var(--BF);font-size:13px;font-weight:800;color:rgba(253,246,236,.5);text-transform:uppercase;letter-spacing:.08em}
 .sk-body{padding:72px 52px 80px;background:var(--cream)}
 .sk-in{max-width:960px;margin:0 auto}
 .skc{margin-bottom:52px}
@@ -245,32 +264,25 @@ nav ul a:hover{color:var(--pink);border-color:var(--pink)}
 
 footer{background:var(--text);text-align:center;padding:26px;font-family:var(--BF);font-size:12.5px;color:rgba(253,246,236,.42)}
 
+/* active nav — works because nav is now a sibling after the page divs */
+#page-about:target    ~ nav a[href="#page-about"],
+#page-experience:target ~ nav a[href="#page-experience"],
+#page-skills:target   ~ nav a[href="#page-skills"],
+#page-contact:target  ~ nav a[href="#page-contact"]{color:var(--pink);border-color:var(--pink)}
+
 @media(max-width:720px){
   .h-intro-in,.ab-in{grid-template-columns:1fr}
   .aside{position:static}
   nav ul{gap:10px} nav ul a{font-size:10.5px}
   .hero-txt{left:24px;right:24px;bottom:36px}
-  .h-intro,.h-roles,.pg-banner,.ab-body,.ex-body,.sk-body,.ct-body{padding-left:24px;padding-right:24px}
+  .h-intro,.h-roles,.pg-banner,.ab-body,.ex-body,.sk-body,.ct-body,.sk-callout{padding-left:24px;padding-right:24px}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="#page-home">Poorvi ✦</a>
-  <ul>
-    <li><a href="#page-home">Home</a></li>
-    <li><a href="#page-about">About</a></li>
-    <li><a href="#page-experience">Experience</a></li>
-    <li><a href="#page-skills">Skills</a></li>
-    <li><a href="#page-contact">Contact</a></li>
-  </ul>
-</nav>
-
-
 <div class="page" id="page-about">
   <div class="pg-banner about-banner">
-    <div style="position:absolute;right:-60px;top:-40px;width:360px;height:360px;border-radius:50%;background:var(--pink);opacity:.18;pointer-events:none"></div>
     <h1>Full of life,<br />always learning,<br />&amp; <em style="color:var(--pink)">passionate.</em></h1>
     <p>Here's a little more about who I am beyond the resume.</p>
   </div>
@@ -287,13 +299,16 @@ footer{background:var(--text);text-align:center;padding:26px;font-family:var(--B
         <p>I then use that as the framework for everything I go on to do: content strategy, prototype development, engagement frameworks, and more. I also focus on building things that can work on their own, making my projects scalable, clear, and repeatable.</p>
 
         <h2 class="pk">Beyond the work</h2>
-        <p>Since I was a baby, or, as I like to say, since before I was born, I have been in the world of meditation, breathwork, and mindfulness. This has been a large part of my life... to the point that almost everyone I know, I know through the<strong>Art of Living Foundation</strong>.</p>
+        <p>Since I was a baby, or, as I like to say, since before I was born, I have been in the world of meditation, breathwork, and mindfulness. This has been a large part of my life... to the point that almost everyone I know, I know through the <strong>Art of Living Foundation</strong>.</p>
         <p>My life has been dedicated to moving the vision of <strong>Gurudev Sri Sri Ravi Shankar</strong> forward, which is to see a smile on every individual's face. Since 2016, I've been a certified breathwork and meditation instructor with the Art of Living Foundation. Teaching has shaped how I think about communication, presence, and meeting people where they are. It's one of the most meaningful things I do.</p>
         <p>I speak three languages, <strong>Tamil, Hindi, and English.</strong> Which has greatly influenced how I think about inclusive, cross cultural experience design.</p>
         <p>When I'm not working, I am most of the time with my family and on some new adventure, or I am meditating!</p>
 
       </div>
       <div class="aside">
+        <div class="photo-card">
+          <img src="poorvi.PNG" alt="Poorvi Hariharan" />
+        </div>
         <div class="acard">
           <h3>Education</h3>
           <div class="school">UNC Chapel Hill</div>
@@ -355,6 +370,15 @@ footer{background:var(--text);text-align:center;padding:26px;font-family:var(--B
     <h1>What I<br />bring to<br />the table.</h1>
     <p>Design, strategy, technology, and the soft skills that tie it all together.</p>
   </div>
+  <div class="sk-callout">
+    <div class="sk-callout-in">
+      <p>Built on <em>curiosity,</em> sharpened through<br />real work, and always <em>evolving.</em></p>
+      <div class="sk-callout-stat">
+        <strong>15+</strong>
+        <span>tools &amp; skills</span>
+      </div>
+    </div>
+  </div>
   <div class="sk-body">
     <div class="sk-in">
       <div class="skc"><div class="skh"><span class="skd" style="background:var(--pink)"></span>Design &amp; Prototyping</div><div class="skcloud"><span class="pill ppk">Figma</span><span class="pill psa">Adobe XD</span><span class="pill por">Illustrator</span><span class="pill psk">Photoshop</span><span class="pill pye">Canva</span><span class="pill ppk">Webflow</span><span class="pill plv">Framer</span><span class="pill pdk">Journey Mapping</span><span class="pill psg">Wireframing</span><span class="pill por">Prototyping</span></div></div>
@@ -370,7 +394,6 @@ footer{background:var(--text);text-align:center;padding:26px;font-family:var(--B
 
 <div class="page" id="page-contact">
   <div class="pg-banner ct-banner">
-    <div style="position:absolute;bottom:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:var(--yellow);opacity:.28;pointer-events:none"></div>
     <h1>Let's<br />talk.</h1>
     <p>I'd love to hear from you.</p>
   </div>
@@ -379,8 +402,8 @@ footer{background:var(--text);text-align:center;padding:26px;font-family:var(--B
       <div class="ct-note">I'm especially drawn to work at the intersection of <span class="pk">digital strategy,</span> <span class="or">UX,</span> and AI. If something you're building resonates please reach out.</div>
       <div class="ct-rows">
         <div class="ctr"><div class="ctl">Email</div><div class="ctv"><a href="mailto:poorvihariharan@gmail.com">poorvihariharan@gmail.com</a></div><div class="cta">→</div></div>
-        <div class="ctr"><div class="ctl">LinkedIn</div><div class="ctv"><a href="https://www.linkedin.com/in/poorvihariharan/" target="_blank">https://www.linkedin.com/in/poorvihariharan/</a></div><div class="cta">→</div></div>
-        <div class="ctr"><div class="ctl">Portfolio</div><div class="ctv"><a href="https://poorvihariharan.github.io/me/" target="_blank">https://poorvihariharan.github.io/me/</a></div><div class="cta">→</div></div>
+        <div class="ctr"><div class="ctl">LinkedIn</div><div class="ctv"><a href="https://www.linkedin.com/in/poorvihariharan/" target="_blank">linkedin.com/in/poorvihariharan</a></div><div class="cta">→</div></div>
+        <div class="ctr"><div class="ctl">Portfolio</div><div class="ctv"><a href="https://poorvihariharan.github.io/me/" target="_blank">poorvihariharan.github.io/me</a></div><div class="cta">→</div></div>
       </div>
     </div>
   </div>
@@ -425,28 +448,24 @@ footer{background:var(--text);text-align:center;padding:26px;font-family:var(--B
       
       <div class="values-list">
         <div class="val-item">
-          <div class="val-num"></div>
           <div class="val-body">
             <div class="val-title">Empathy first</div>
             <div class="val-desc">Every decision starts with understanding the person on the other side.</div>
           </div>
         </div>
         <div class="val-item">
-          <div class="val-num"></div>
           <div class="val-body">
             <div class="val-title">Rooted in curiosity</div>
             <div class="val-desc">I ask questions before I reach for answers. Always learning, always exploring.</div>
           </div>
         </div>
         <div class="val-item">
-          <div class="val-num"></div>
           <div class="val-body">
             <div class="val-title">Built to connect</div>
             <div class="val-desc">Great design bridges people. I build experiences that make someone feel seen.</div>
           </div>
         </div>
         <div class="val-item">
-          <div class="val-num"></div>
           <div class="val-body">
             <div class="val-title">Grounded in joy</div>
             <div class="val-desc">Mindfulness, community, and a deep love for people shape everything I create.</div>
@@ -471,6 +490,17 @@ footer{background:var(--text);text-align:center;padding:26px;font-family:var(--B
 
   <footer><p>© 2025 Poorvi Hariharan  ✦  Made with IBM Bob</p></footer>
 </div>
+
+<nav>
+  <a class="nav-logo" href="#page-home">Poorvi ✦</a>
+  <ul>
+    <li><a href="#page-home">Home</a></li>
+    <li><a href="#page-about">About</a></li>
+    <li><a href="#page-experience">Experience</a></li>
+    <li><a href="#page-skills">Skills</a></li>
+    <li><a href="#page-contact">Contact</a></li>
+  </ul>
+</nav>
 
 </body>
 </html>
